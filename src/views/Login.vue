@@ -13,7 +13,7 @@
       "
     >
       <h4 class="mb-2">Zaloguj się do swojego konta</h4>
-      <b-form @submit="handleSubmit" id="login-form">
+      <b-form @submit.prevent="handleSubmit" id="login-form">
         <b-form-group id="email-group" label-for="email" class="my-4">
           <b-form-input
             id="email"
@@ -61,8 +61,7 @@ export default {
     },
   }),
   methods: {
-    handleSubmit(e) {
-      e.preventDefault();
+    handleSubmit() {
       console.log(this.form);
     },
   },
