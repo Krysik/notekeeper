@@ -32,13 +32,13 @@
           </p>
         </div>
         <!-- /.col-lg-4 -->
-        <!-- <div class="col-lg-4">
-          <h2>Edytuj</h2>
+        <div class="col-lg-4">
+          <h2>Nadawaj tagi</h2>
           <p class="lead font-weight-normal">
-            Literówka, zmiana planów ? Nic strasznego możesz edytować notatkę z
-            każdego urządzenia podłączonego do internetu.
+            Tagi pomagają uporządkować twoje notatki. Wykorzystaj je a znacznie
+            przyspieszy to twoją pracę.
           </p>
-        </div> -->
+        </div>
         <!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <h2>Udostępniaj</h2>
