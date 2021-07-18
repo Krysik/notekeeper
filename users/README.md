@@ -1,3 +1,9 @@
+# Users microservice
+
+### Migrations
+
+If You want to generate the migration run: `npx sequelize-cli migration:generate --name <NAME_OF_MIGRATION>`
+
 #### Used Technologies:
 
 - Express
@@ -13,7 +19,9 @@
 - `npm run lint` - lints the code
 - `npm run test` - runs tests once
 - `npm rut test:watch` - runs tests in watch mode
+- `npm run migrate:prod` - runs the migration for prod environment
+- `npm run migrate:dev` - runs the migration for dev environment
 
 ### Environment Variables
 
-- PORT (optional) - port for express app
+- AMQP_URL - The address to amqp server, default: `amqp://localhost`

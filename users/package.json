@@ -8,7 +8,11 @@
     "build": "tsc",
     "test:watch": "jest --watchAll",
     "test": "jest",
-    "lint": "npx eslint src/**/*.{ts,js} --fix && npx prettier --config .prettierrc.json --write ."
+    "lint": "npx eslint src/**/*.{ts,js} --fix && npx prettier --config .prettierrc.json --write .",
+    "migrate:prod": "npx sequelize-cli db:migrate --env prod",
+    "migrate:dev": "npx sequelize-cli db:migrate --env dev",
+    "undo:dev": "npx sequelize-cli db:migrate:undo --env dev",
+    "undo:prod": "npx sequelize-cli db:migrate:undo --env prod"
   },
   "keywords": [],
   "author": "Marcin Krysiński",
@@ -22,6 +26,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@types/amqplib": "^0.8.1",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.22",
