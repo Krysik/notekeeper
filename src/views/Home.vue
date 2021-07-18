@@ -10,12 +10,14 @@
         <p class="header-text">
           Dodawaj, usuwaj, nadawaj tagi i dziel się swoimi notatkami.
         </p>
-        <b-button class="mr-4 mt-3" variant="success" href="/login"
-          >Zaloguj się</b-button
-        >
-        <b-button class="mt-3" variant="info" href="/register"
-          >Zarejestruj się</b-button
-        >
+        <div class="header-buttons">
+          <b-button class="mr-4 mt-3" variant="success">
+            <router-link to="/login">Zaloguj się</router-link>
+          </b-button>
+          <b-button class="mt-3" variant="info">
+            <router-link to="/register">Zarejestruj się</router-link>
+          </b-button>
+        </div>
         <!-- <b-button variant="primary" href="#">More Info</b-button> -->
       </b-jumbotron>
     </header>
@@ -84,6 +86,17 @@ export default {
     }
     h2 {
       font-size: 3.7rem;
+    }
+    .header-buttons button {
+      padding: 0;
+    }
+    .header-buttons button a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      padding: 6px 12px;
     }
     .header-text {
       font-weight: 300;
