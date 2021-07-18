@@ -26,6 +26,7 @@
     "no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
     "import/extensions": "off",
     "import/no-unresolved": [2, { "caseSensitive": false }],
-    "import/first": "off"
+    "import/first": "off",
+    "no-param-reassign": "off"
   }
 }

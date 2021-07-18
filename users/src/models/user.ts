@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../services/database";
 
@@ -34,6 +35,11 @@ const User = sequelize.define<UserInstance, IUser>('User', {
   },
 }, {
   timestamps: true
+})
+
+User.beforeCreate(async (user) => {
+  const hashed = await bcrypt.hash(user.password, 10);
+  user.password = hashed;
 })
 
 export default User;
