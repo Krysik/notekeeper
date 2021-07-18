@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../services/database";
 
-interface IUser {
+export interface IUser {
   id?: number;
   username: string;
   email: string;
@@ -31,10 +31,11 @@ const User = sequelize.define<UserInstance, IUser>('User', {
     allowNull: false
   },
   password: {
-    type: DataTypes.STRING(40)
+    type: DataTypes.TEXT
   },
 }, {
-  timestamps: true
+  timestamps: true,
+  tableName: 'users'
 })
 
 User.beforeCreate(async (user) => {

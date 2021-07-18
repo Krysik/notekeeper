@@ -38,6 +38,7 @@
             id="password"
             placeholder="Hasło"
             v-model="form.password"
+            type="password"
             required
           ></b-form-input>
         </b-form-group>
@@ -51,6 +52,7 @@
             id="confirm-password"
             placeholder="Powtórz hasło"
             v-model="confirmPassword"
+            type="password"
             required
           ></b-form-input>
         </b-form-group>
@@ -68,6 +70,9 @@
 
 <script>
 import TopBar from "@/components/TopBar";
+// import axios from '@/utils/axios';
+import axios from 'axios';
+
 export default {
   name: "Register",
   components: {
@@ -94,15 +99,22 @@ export default {
     },
   },
   methods: {
-    handleSubmit() {
-      if (this.isFormValid()) {
-        console.log("everything is okay");
-        console.log(this.form);
+    async handleSubmit() {
+      if (!this.isFormValid()) {
+        console.log('not valid');
+        return;
+      }
+      try {
+        const response = await axios.post('/api/users', this.form)
+        console.log('response', response);
+      } catch (error) {
+        console.log(error);
+
       }
     },
 
     isFormValid() {
-      if (this.form.password !== this.form.confirmPassword) {
+      if (this.form.password !== this.confirmPassword) {
         this.errorMsg = "Hasła nie są takie same";
         this.showAlert = true;
         this.alertVariant = "danger";
