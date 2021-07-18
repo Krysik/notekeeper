@@ -25,6 +25,7 @@
     "linebreak-style": "off",
     "no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
     "import/extensions": "off",
-    "import/no-unresolved": [2, { "caseSensitive": false }]
+    "import/no-unresolved": [2, { "caseSensitive": false }],
+    "import/first": "off"
   }
 }
