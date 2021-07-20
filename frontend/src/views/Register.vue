@@ -2,9 +2,9 @@
   <div id="register">
     <TopBar />
     <div class="container">
-      <b-alert v-model="showAlert" :variant="alertVariant">{{
-        errorMsg
-      }}</b-alert>
+      <b-alert v-model="showAlert" :variant="alertVariant">
+        {{ alerMsg }}
+      </b-alert>
       <b-form @submit.prevent="handleSubmit" id="register-form" class="pt-3">
         <b-form-group
           class="my-4"
@@ -60,7 +60,7 @@
           Zarejestruj się
         </b-button>
         <p class="mt-4">
-          Posiadasz już konto ?
+          Posiadasz już konto?
           <router-link to="/login">zaloguj się</router-link>
         </p>
       </b-form>
@@ -70,8 +70,8 @@
 
 <script>
 import TopBar from "@/components/TopBar";
-// import axios from '@/utils/axios';
-import axios from 'axios';
+import axios from '@/utils/axios';
+// import axios from 'axios';
 
 export default {
   name: "Register",
@@ -85,7 +85,7 @@ export default {
       password: "",
     },
     confirmPassword: "",
-    errorMsg: "",
+    alerMsg: "",
     showAlert: false,
     alertVariant: "success",
   }),
@@ -94,7 +94,7 @@ export default {
       if (value) {
         setTimeout(() => {
           this.showAlert = false;
-        }, 2200);
+        }, 2800);
       }
     },
   },
@@ -107,27 +107,35 @@ export default {
       try {
         const response = await axios.post('/api/users', this.form)
         console.log('response', response);
+        this.alerMsg = "Zarejestrowano pomyślnie"
+        this.showAlert = true;
+        this.alertVariant = "success";
       } catch (error) {
-        console.log(error);
-
+        console.log(error.toString());
+        if (error.response.status === 400 && error.response.data.fields && 'email' in error.response.data.fields) {
+          this.alerMsg = "Taki email już istnieje";
+          this.showAlert = true;
+          this.alertVariant = "danger";
+        }
+        console.log();
       }
     },
 
     isFormValid() {
       if (this.form.password !== this.confirmPassword) {
-        this.errorMsg = "Hasła nie są takie same";
+        this.alerMsg = "Hasła nie są takie same";
         this.showAlert = true;
         this.alertVariant = "danger";
         return false;
       }
       if (this.form.password.length < 8) {
-        this.errorMsg = "Hasło jest za krótkie";
+        this.alerMsg = "Hasło jest za krótkie";
         this.showAlert = true;
         this.alertVariant = "danger";
         return false;
       }
       if (this.form.username < 4) {
-        this.errorMsg = "Nazwa użytkownika jest za krótka";
+        this.alerMsg = "Nazwa użytkownika jest za krótka";
         this.showAlert = true;
         this.alertVariant = "danger";
         return false;
