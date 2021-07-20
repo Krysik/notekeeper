@@ -1,0 +1,37 @@
+{
+  "name": "notekeeper",
+  "version": "1.0.0",
+  "description": "### Architecture",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krysik/notekeeper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Krysik/notekeeper/issues"
+  },
+  "homepage": "https://github.com/Krysik/notekeeper#readme",
+  "devDependencies": {
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.1"
+  },
+  "lint-staged": {
+    "frontend/**/*.{js,ts,vue}": [
+      "cd frontend && npm run lint"
+    ],
+    "api-gateway/**/*.{js,ts}": [
+      "npx eslint api-gateway/src/**/*.{ts,js} --config api-gateway/.eslintrc.json --fix",
+      "npx prettier --config api-gateway/.prettierrc.json --write api-gateway/**/*.{ts,js}"
+    ],
+    "users/**/*.{js,ts}": [
+      "npx eslint users/src/**/*.{ts,js} --config users/.eslintrc.json --fix",
+      "npx prettier --config users/.prettierrc.json --write users/**/*.{ts,js}"
+    ]
+  }
+}
