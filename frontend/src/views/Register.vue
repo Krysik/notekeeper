@@ -70,7 +70,7 @@
 
 <script>
 import TopBar from "@/components/TopBar";
-import axios from '@/utils/axios';
+import axios from "@/utils/axios";
 // import axios from 'axios';
 
 export default {
@@ -101,18 +101,22 @@ export default {
   methods: {
     async handleSubmit() {
       if (!this.isFormValid()) {
-        console.log('not valid');
+        console.log("not valid");
         return;
       }
       try {
-        const response = await axios.post('/api/users', this.form)
-        console.log('response', response);
-        this.alerMsg = "Zarejestrowano pomyślnie"
+        const response = await axios.post("/api/users", this.form);
+        console.log("response", response);
+        this.alerMsg = "Zarejestrowano pomyślnie";
         this.showAlert = true;
         this.alertVariant = "success";
       } catch (error) {
         console.log(error.toString());
-        if (error.response.status === 400 && error.response.data.fields && 'email' in error.response.data.fields) {
+        if (
+          error.response.status === 400 &&
+          error.response.data.fields &&
+          "email" in error.response.data.fields
+        ) {
           this.alerMsg = "Taki email już istnieje";
           this.showAlert = true;
           this.alertVariant = "danger";

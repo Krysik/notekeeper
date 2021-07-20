@@ -7,7 +7,7 @@
     "start": "ts-node-dev ./src/app.ts",
     "build": "tsc",
     "test:watch": "jest --watchAll",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "lint": "npx eslint src/**/*.{ts,js} --fix && npx prettier --config .prettierrc.json --write .",
     "migrate:prod": "npx sequelize-cli db:migrate --env prod",
     "migrate:dev": "npx sequelize-cli db:migrate --env dev",

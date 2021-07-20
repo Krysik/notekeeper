@@ -8,7 +8,7 @@ class RabbitMq {
 
   private static channel: amqp.Channel;
 
-  static rpcQueue = 'users_rpc_queue'
+  static rpcQueue = 'users_rpc_queue';
 
   get channel() {
     return RabbitMq.channel;
@@ -34,7 +34,7 @@ class RabbitMq {
   }
 
   publish(exchange: string, routingKey: string, data: unknown) {
-    RabbitMq.channel.publish(exchange, routingKey, Buffer.from(JSON.stringify(data)))
+    RabbitMq.channel.publish(exchange, routingKey, Buffer.from(JSON.stringify(data)));
   }
 
   consume(

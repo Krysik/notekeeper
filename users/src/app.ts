@@ -9,7 +9,6 @@ const main = async () => {
   await connectDb();
   await RabbitMq.connect();
   rabbitMqHandlers();
-}
+};
 
 main();
-
