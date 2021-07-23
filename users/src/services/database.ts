@@ -1,5 +1,5 @@
-import { Sequelize } from "sequelize";
-import logger from "./winston";
+import { Sequelize } from 'sequelize';
+import logger from './winston';
 
 const ssl = process.env.PG_SSL;
 
@@ -12,7 +12,7 @@ const sequelize = new Sequelize({
   dialect: 'postgres',
   dialectOptions: ssl ? { ssl: { require: true } } : {},
   logging: false,
-})
+});
 
 const connectDb = async () => {
   try {
@@ -21,10 +21,7 @@ const connectDb = async () => {
   } catch (error) {
     logger.error('Error during establishing database connection');
     console.log(error);
-
   }
-}
+};
 
-export {
-  connectDb, sequelize
-}
+export { connectDb, sequelize };

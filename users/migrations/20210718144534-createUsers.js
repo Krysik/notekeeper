@@ -1,5 +1,3 @@
-
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
@@ -13,7 +11,7 @@ module.exports = {
         type: Sequelize.DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
+        allowNull: false,
       },
       username: {
         type: Sequelize.DataTypes.STRING(30),
@@ -25,16 +23,16 @@ module.exports = {
         allowNull: false,
       },
       password: {
-        type: Sequelize.DataTypes.TEXT
+        type: Sequelize.DataTypes.TEXT,
       },
       createdAt: {
         type: Sequelize.DataTypes.DATE,
         defaultValue: Sequelize.Utils.now(),
       },
       updatedAt: {
-        type: Sequelize.DataTypes.DATE
-      }
-    })
+        type: Sequelize.DataTypes.DATE,
+      },
+    });
   },
 
   down: async (queryInterface) => {
@@ -44,6 +42,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('users')
-  }
+    await queryInterface.dropTable('users');
+  },
 };
