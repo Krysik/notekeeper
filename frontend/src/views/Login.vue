@@ -1,6 +1,11 @@
 <template>
   <div id="login">
     <TopBar />
+    <div class="container">
+      <b-alert v-model="showAlert" :variant="alertVariant">
+        {{ alertMsg }}
+      </b-alert>
+    </div>
     <div
       class="
         container
@@ -49,6 +54,8 @@
 
 <script>
 import TopBar from "@/components/TopBar.vue";
+import axios from "@/utils/axios";
+
 export default {
   name: "Login",
   components: {
@@ -59,10 +66,31 @@ export default {
       email: "",
       password: "",
     },
+    showAlert: false,
+    alertVariant: "success",
+    alertMsg: "",
   }),
+  watch: {
+    showAlert(value) {
+      if (value) {
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 4000);
+      }
+    },
+  },
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
       console.log(this.form);
+      try {
+        const response = await axios.post("/api/users/login", this.form);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+        this.showAlert = true;
+        this.alertVariant = "danger";
+        this.alertMsg = "Niepoprawne dane logowania";
+      }
     },
   },
 };

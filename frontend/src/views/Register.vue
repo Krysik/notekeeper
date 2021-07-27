@@ -94,7 +94,7 @@ export default {
       if (value) {
         setTimeout(() => {
           this.showAlert = false;
-        }, 2800);
+        }, 4000);
       }
     },
   },
